@@ -1,0 +1,16 @@
+version: 2
+
+jobs:
+  build:
+    docker:
+      - image: circleci/openjdk:11-jdk-stretch
+
+    working_directory: ~/zuri/springboot_awstest
+
+    steps:
+      # git pull
+      - checkout
+
+      # setup
+      - run: docker build -t docker-example:0.0.1
+      - run: sudo docker run -d -p 8080:8080/tcp docker-example:0.0.1
