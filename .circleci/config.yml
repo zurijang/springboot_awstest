@@ -11,10 +11,9 @@ jobs:
       # git pull
       - checkout
 
-      - run : ssh -p 2222 zuri@172.203.2.154 "cd ~/zuri/springboot_awstest ; bash"
       # setup
-      #- run: docker build -t docker-example:0.0.1
-      #- run: sudo docker run -d -p 8080:8080/tcp docker-example:0.0.1
+      - run: docker build -t docker-example:0.0.1
+      - run: sudo docker run -d -p 8080:8080/tcp docker-example:0.0.1
 
 workflows:
   version: 2
