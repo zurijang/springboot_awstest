@@ -41,4 +41,4 @@ jobs:
             - ~/.gradle
           key: v1-dependencies-{{ checksum "build.gradle" }}
 
-      - run: ssh -o StrictHostKeyChecking=no -p2222 zuri@175.203.2.154 "~/deploy.sh"
+      - run: ssh -o StrictHostKeyChecking=no -p2222 zuri@175.203.2.154 "~/deploy.sh &"
