@@ -40,14 +40,13 @@ jobs:
           paths:
             - ~/.gradle
           key: v1-dependencies-{{ checksum "build.gradle" }}
-
-    deploy:
-      machine:
-        enabled: true
-      steps:
-          - run:
-              name: Deploy Over SSH
-              command: ssh -o StrictHostKeyChecking=no -p2222 zuri@175.203.2.154 "nohup ~/deploy.sh &"
+  deploy:
+    machine:
+      enabled: true
+    steps:
+        - run:
+            name: Deploy Over SSH
+            command: ssh -o StrictHostKeyChecking=no -p2222 zuri@175.203.2.154 "nohup ~/deploy.sh &"
 
 workflows:
   version: 2
