@@ -41,12 +41,15 @@ jobs:
             - ~/.gradle
           key: v1-dependencies-{{ checksum "build.gradle" }}
   deploy:
+    docker:
+      # specify the version you desire here
+      - image: circleci/openjdk:11-jdk
     machine:
       enabled: true
     steps:
-        - run:
-            name: Deploy Over SSH
-            command: ssh -o StrictHostKeyChecking=no -p2222 zuri@175.203.2.154 "nohup ~/deploy.sh &"
+      - run:
+          name: Deploy Over SSH
+          command: ssh -o StrictHostKeyChecking=no -p2222 zuri@175.203.2.154 "nohup ~/deploy.sh &"
 
 workflows:
   version: 2
@@ -54,8 +57,8 @@ workflows:
     jobs:
       - build
       - deploy:
-        requires:
-          - build
+          requires:
+            - build
         filters:
           branches:
             only: main
